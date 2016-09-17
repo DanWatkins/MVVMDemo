@@ -12,13 +12,5 @@ namespace MvvmDemo
         {
             InitializeComponent();
         }
-
-        private void StudentViewControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            var studentViewModel = new StudentsViewModel();
-            studentViewModel.LoadStudents();
-
-            StudentViewControl.DataContext = studentViewModel;
-        }
     }
 }

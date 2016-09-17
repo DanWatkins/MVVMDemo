@@ -7,7 +7,7 @@ namespace MvvmDemo.ViewModel
     {
         public ObservableCollection<Student> Students { get; set; }
 
-        public void LoadStudents()
+        public StudentsViewModel()
         {
             Students = new ObservableCollection<Student>
             {
