@@ -5,23 +5,19 @@
    xmlns:d = "http://schemas.microsoft.com/expression/blend/2008" 
    xmlns:local = "clr-namespace:MvvmDemo.View" 
    xmlns:viewModel = "clr-namespace:MvvmDemo.ViewModel"
-   xmlns:viewModelLocator ="clr-namespace:MvvmDemo"
+   xmlns:viewModelLocator = "clr-namespace:MvvmDemo"
+   xmlns:data = "clr-namespace:MvvmDemo.Core;assembly=MvvmDemo.Core"
    viewModelLocator:ViewModelLocator.AutoHookedUpViewModel="True"
    mc:Ignorable = "d" 
    d:DesignHeight = "300" d:DesignWidth = "300">
-    <Grid>
-        <StackPanel HorizontalAlignment = "Left">
-            <ItemsControl ItemsSource = "{Binding Path = Students}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation = "Horizontal">
-                            <TextBox Text = "{Binding Path = FirstName, Mode = TwoWay}" Width = "100" Margin = "3 5 3 5"/>
-                            <TextBox Text = "{Binding Path = LastName, Mode = TwoWay}" Width = "100" Margin = "0 5 3 5"/>
-                            <TextBlock Text = "{Binding Path = FullName, Mode = OneWay}" Margin = "0 5 3 5"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </StackPanel>
-    </Grid>
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type data:Student}">
+            <StackPanel Orientation="Horizontal">
+                <TextBox Text="{Binding Path=FirstName, Mode=TwoWay}" Width="100" Margin="3 5 3 5" />
+                <TextBox Text="{Binding Path=LastName, Mode=TwoWay}" Width="100" Margin="3 5 3 5" />
+                <TextBlock Text="{Binding Path=FullName, Mode=OneWay}" Width="100" Margin="0 5 3 5" />
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+    <ListBox ItemsSource="{Binding Students}" />
 </UserControl>
