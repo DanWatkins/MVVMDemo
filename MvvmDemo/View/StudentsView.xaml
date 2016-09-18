@@ -5,11 +5,10 @@
    xmlns:d = "http://schemas.microsoft.com/expression/blend/2008" 
    xmlns:local = "clr-namespace:MvvmDemo.View" 
    xmlns:viewModel = "clr-namespace:MvvmDemo.ViewModel"
+   xmlns:viewModelLocator ="clr-namespace:MvvmDemo"
+   viewModelLocator:ViewModelLocator.AutoHookedUpViewModel="True"
    mc:Ignorable = "d" 
    d:DesignHeight = "300" d:DesignWidth = "300">
-    <UserControl.DataContext>
-        <viewModel:StudentsViewModel/>
-    </UserControl.DataContext>
     <Grid>
         <StackPanel HorizontalAlignment = "Left">
             <ItemsControl ItemsSource = "{Binding Path = Students}">
