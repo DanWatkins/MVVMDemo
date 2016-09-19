@@ -1,0 +1,40 @@
+﻿<Window x:Class="HierarchiesDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HierarchiesDemo"
+        xmlns:view="clr-namespace:HierarchiesDemo.View"
+        xmlns:viewModel="clr-namespace:HierarchiesDemo.ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.DataContext>
+        <viewModel:MainWindowViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewModel:CustomerListViewModel}">
+            <view:CustomerListView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModel:OrderViewModel}">
+            <view:OrderView/>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="NavBar">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Content="Customers" Command="{Binding NavigationCommand}" CommandParameter="customers" Grid.Column="0"/>
+            <Button Content="Orders" Command="{Binding NavigationCommand}" CommandParameter="orders" Grid.Column="2"/>
+        </Grid>
+        <Grid x:Name="MainContent" Grid.Row="1">
+            <ContentControl Content="{Binding CurrentViewModel}"/>
+        </Grid>
+    </Grid>
+</Window>
